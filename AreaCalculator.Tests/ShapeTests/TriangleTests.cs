@@ -38,4 +38,36 @@ public class TriangleTests
 		Assert.Throws<ArgumentException>(() => new Triangle(-3.0, 4.0, 5.0),
 			"Expected ArgumentException for negative side length.");
 	}
+	
+	/// <summary>
+	/// Tests if the triangle correctly identifies as a right triangle.
+	/// </summary>
+	[Test]
+	public void IsRightTriangle_RightTriangle_ReturnsTrue()
+	{
+		// Arrange
+		var triangle = new Triangle(3, 4, 5);
+
+		// Act
+		var isRightTriangle = triangle.IsRightTriangle();
+
+		// Assert
+		Assert.That(isRightTriangle, Is.True, "3-4-5 should be a right triangle.");
+	}
+
+	/// <summary>
+	/// Tests if the triangle correctly identifies as not a right triangle.
+	/// </summary>
+	[Test]
+	public void IsRightTriangle_NotRightTriangle_ReturnsFalse()
+	{
+		// Arrange
+		var triangle = new Triangle(3, 4, 6);
+
+		// Act
+		var isRightTriangle = triangle.IsRightTriangle();
+
+		// Assert
+		Assert.That(isRightTriangle, Is.False, "3-4-6 should not be a right triangle.");
+	}
 }

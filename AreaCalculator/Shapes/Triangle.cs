@@ -62,4 +62,15 @@ public class Triangle : Shape
 	{
 		return a > 0 && b > 0 && c > 0 && (a + b > c) && (a + c > b) && (b + c > a);
 	}
+	
+	/// <summary>
+	/// Checks if the triangle is a right triangle.
+	/// </summary>
+	/// <returns><c>true</c> if the triangle is right-angled; otherwise, <c>false</c>.</returns>
+	public bool IsRightTriangle()
+	{
+		double[] sides = { A, B, C };
+		Array.Sort(sides);
+		return Math.Abs(sides[2] * sides[2] - (sides[0] * sides[0] + sides[1] * sides[1])) < 1e-10;
+	}
 }
